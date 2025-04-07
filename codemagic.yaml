@@ -1,0 +1,18 @@
+workflows:
+  mazda:
+    name: "Build Mazda App"
+    environment:
+      flutter: stable # O la versión de Flutter que uses
+    scripts:
+      - flutter pub get # Obtiene las dependencias
+      - flutter build apk --flavor mazda # Construye el APK para Mazda
+      - flutter build ios --flavor mazda # Construye la app para iOS (opcional)
+
+  nissan:
+    name: "Build Nissan App"
+    environment:
+      flutter: stable # O la versión de Flutter que uses
+    scripts:
+      - flutter pub get # Obtiene las dependencias
+      - flutter build apk --flavor nissan # Construye el APK para Nissan
+      - flutter build ios --flavor nissan # Construye la app para iOS (opcional)
