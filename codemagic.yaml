@@ -2,10 +2,7 @@ workflows:
   mazda:
     name: "Build Mazda App"
     environment:
-      flutter: stable # O la versión de Flutter que uses
-      variables:
-        FLAVOR: "mazda"
-        MAZDA_KEYSTORE_PATH: "path/mazda-keystore.jks"
+      flutter: stable # O la versión de Flutter que uses      
     scripts:
       - flutter pub get # Obtiene las dependencias
       - flutter build apk --flavor mazda # Construye el APK para Mazda
@@ -14,10 +11,7 @@ workflows:
   nissan:
     name: "Build Nissan App"
     environment:
-      flutter: stable # O la versión de Flutter que uses
-      variables:
-        FLAVOR: "nissan"
-        NISSAN_KEYSTORE_PATH: "path/nissan-keystore.jks"
+      flutter: stable # O la versión de Flutter que uses      
     scripts:
       - flutter pub get # Obtiene las dependencias
       - flutter build apk --flavor nissan # Construye el APK para Nissan
