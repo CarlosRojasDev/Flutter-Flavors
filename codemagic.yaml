@@ -2,10 +2,7 @@ workflows:
   mazda_android:
     name: Mazda APK Workflow
     environment:
-      flutter: stable
-      variables:
-        FLAVOR: mazda
-        APP_ID: com.example.mazda
+      flutter: stable      
     scripts:
       - flutter clean
       - flutter pub get
@@ -27,10 +24,7 @@ workflows:
   nissan_android:
     name: Nissan APK Workflow
     environment:
-      flutter: stable
-      variables:
-        FLAVOR: nissan
-        APP_ID: com.example.nissan
+      flutter: stable      
     scripts:
       - flutter clean
       - flutter pub get
