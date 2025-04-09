@@ -1,18 +1,50 @@
 workflows:
-  mazda:
-    name: "Build Mazda App"
+  mazda_android:
+    name: Mazda APK Workflow
     environment:
-      flutter: stable # O la versión de Flutter que uses      
+      flutter: stable
+      variables:
+        FLAVOR: mazda
+        APP_ID: com.example.mazda
     scripts:
-      - flutter pub get # Obtiene las dependencias
-      - flutter build apk --flavor mazda # Construye el APK para Mazda
-      - flutter build ios --flavor mazda # Construye la app para iOS (opcional)
+      - flutter clean
+      - flutter pub get
+      - flutter build apk --flavor=mazda --dart-define=FLAVOR=mazda
+    artifacts:
+      - build/app/outputs/flutter-apk/app-mazda.apk
 
-  nissan:
-    name: "Build Nissan App"
+  mazda_ios:
+    name: Mazda IPA Workflow
     environment:
-      flutter: stable # O la versión de Flutter que uses      
+      flutter: stable
     scripts:
-      - flutter pub get # Obtiene las dependencias
-      - flutter build apk --flavor nissan # Construye el APK para Nissan
-      - flutter build ios --flavor nissan # Construye la app para iOS (opcional)
+      - flutter clean
+      - flutter pub get
+      - flutter build ios --release --no-codesign
+    artifacts:
+      - build/ios/ipa/*.ipa
+
+  nissan_android:
+    name: Nissan APK Workflow
+    environment:
+      flutter: stable
+      variables:
+        FLAVOR: nissan
+        APP_ID: com.example.nissan
+    scripts:
+      - flutter clean
+      - flutter pub get
+      - flutter build apk --flavor=nissan --dart-define=FLAVOR=nissan
+    artifacts:
+      - build/app/outputs/flutter-apk/app-nissan.apk
+
+  nissan_ios:
+    name: Nissan IPA Workflow
+    environment:
+      flutter: stable
+    scripts:
+      - flutter clean
+      - flutter pub get
+      - flutter build ios --release --no-codesign
+    artifacts:
+      - build/ios/ipa/*.ipa
